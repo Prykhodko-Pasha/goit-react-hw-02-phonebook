@@ -1,22 +1,30 @@
 .wrapper,
 .contacts__list {
-  /* margin: 8px 0; */
   padding: 0 37.5px;
   display: block;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 0.5;
+  text-transform: uppercase;
 }
 .wrapper {
   padding-top: 37.5px;
 }
 .contacts__list {
   padding-bottom: 37.5px;
-  font-size: 1em;
-  font-weight: 400;
-  letter-spacing: 1px;
 }
 
 .contacts__item {
   display: flex;
   justify-content: space-between;
+}
+.contacts__item:hover {
+  background-color: #f2f3eb;
+}
+
+.text {
+  padding-bottom: 37.5px;
 }
 
 .del__btn {
