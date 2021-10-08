@@ -1,3 +1,7 @@
 .contacts__list {
   margin: 8px 0;
 }
+
+label {
+  text-transform: none;
+}
