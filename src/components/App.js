@@ -32,6 +32,12 @@ export default class Phonebook extends React.Component {
     this.setState({ filter: e.currentTarget.value.toLowerCase() });
   };
 
+  onDeleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts, filter } = this.state;
     let total = contacts.length;
@@ -48,7 +54,10 @@ export default class Phonebook extends React.Component {
           {total > 0 ? (
             <>
               <ContactsSearch value={filter} onChange={this.onSearch} />
-              <Contacts contactsArr={filteredContactsArr} />
+              <Contacts
+                contactsArr={filteredContactsArr}
+                onDeleteContact={this.onDeleteContact}
+              />
             </>
           ) : (
             <p>No contacts yet</p>

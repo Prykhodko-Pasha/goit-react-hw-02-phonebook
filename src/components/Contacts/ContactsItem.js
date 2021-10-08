@@ -1,26 +1,27 @@
 import PropTypes from 'prop-types';
-// import s from './Contacts.module.css';
+import s from './Contacts.module.css';
 // import { FaTrashAlt } from 'react-icons/fa';
 
-export default function ContactsItem({ name, number }) {
+export default function ContactsItem({ id, name, number, onDeleteContact }) {
   return (
     <>
       <p>
         {name}: {number}
       </p>
-      {/* <button
-        className={ce.btn}
+      <button
+        className={s.del__btn}
         type="button"
         onClick={() => onDeleteContact(id)}
-        >
-        <FaTrashAlt size="20px" />
-    </button> */}
+      >
+        Delete
+      </button>
     </>
   );
 }
 
 ContactsItem.propTypes = {
-  //   onDeleteContact: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
 };
