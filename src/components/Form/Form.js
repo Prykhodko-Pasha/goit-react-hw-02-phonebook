@@ -1,17 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import s from './Form.module.css';
 
 export default class Form extends React.Component {
   state = {
+    id: '',
     name: '',
     number: '',
-    id: '',
+  };
+
+  static propTypes = {
+    onAddContact: PropTypes.func.isRequired,
   };
 
   onChange = e => {
     const { name, value } = e.currentTarget;
-
     this.setState({ [name]: value });
   };
 
@@ -32,10 +36,10 @@ export default class Form extends React.Component {
     return (
       <form className={s.form} onSubmit={this.onSubmit}>
         <label>
-          Name
           <input
             type="text"
             name="name"
+            placeholder="Name"
             value={this.state.name}
             onChange={this.onChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,10 +49,10 @@ export default class Form extends React.Component {
         </label>
         <br />
         <label>
-          Number
           <input
             type="tel"
             name="number"
+            placeholder="Number"
             value={this.state.number}
             onChange={this.onChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

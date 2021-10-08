@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import s from './Contacts.module.css';
-// import { FaTrashAlt } from 'react-icons/fa';
 
 export default function ContactsItem({ id, name, number, onDeleteContact }) {
   return (
@@ -20,8 +19,8 @@ export default function ContactsItem({ id, name, number, onDeleteContact }) {
 }
 
 ContactsItem.propTypes = {
-  onDeleteContact: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
