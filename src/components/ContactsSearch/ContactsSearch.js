@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import s from './Contacts.module.css';
+import s from '../Contacts/Contacts.module.css';
 
 export default function ContactsSearch({ value, onChange }) {
   return (

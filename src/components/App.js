@@ -2,7 +2,7 @@ import React from 'react';
 import Section from './Section/Section';
 import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
-import ContactsSearch from './Contacts/ContactsSearch';
+import ContactsSearch from './ContactsSearch/ContactsSearch';
 import s from './Contacts/Contacts.module.css';
 
 export default class Phonebook extends React.Component {
@@ -11,9 +11,18 @@ export default class Phonebook extends React.Component {
     filter: '',
   };
 
+  countContats = () => this.state.contacts.length;
+
+  filteredContactsArr = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter),
+    );
+  };
+
   onAddContact = contact => {
     const isContactExist = this.state.contacts.filter(
-      con => con.name === contact.name,
+      con => con.name.toLowerCase() === contact.name.toLowerCase(),
     );
     if (isContactExist.length === 0) {
       this.setState(prevState => ({
@@ -35,11 +44,7 @@ export default class Phonebook extends React.Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
-    let total = contacts.length;
-    const filteredContactsArr = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter),
-    );
+    let total = this.countContats();
 
     return (
       <>
@@ -49,9 +54,12 @@ export default class Phonebook extends React.Component {
         <Section title="Contacts">
           {total > 0 ? (
             <>
-              <ContactsSearch value={filter} onChange={this.onSearch} />
+              <ContactsSearch
+                value={this.state.filter}
+                onChange={this.onSearch}
+              />
               <Contacts
-                contactsArr={filteredContactsArr}
+                contactsArr={this.filteredContactsArr()}
                 onDeleteContact={this.onDeleteContact}
               />
             </>
